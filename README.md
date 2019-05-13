@@ -5,8 +5,7 @@ This is the online artifact page/repository for the ASE '19 submission titled "I
 ## Repo Overview
 
 * `SOAnalysisCode`: contains all the code we used to extract sentences using the four evaluated techniques: wordpatterns, lexrank, simpleif, and condinsights. 
-* `SurveyData`: contains a snapshot of all the data collected from our survey, which ended in May 2019.
-* `SurveyAnalysisCode`: contains the scripts we use to extract relevant data from the survey database and analyze it to produce the figures in the paper.
+* `SurveyAnalysisCode`: contains a snapshot of all the data collected from our survey, which ended in May 2019, and the scripts we use to extract relevant data from the survey database and analyze it to produce the figures in the paper.
 
 ## Extracting Navigation Cues Using the Four Techniques
 
