@@ -1,43 +1,80 @@
-# Extracting conditional insight sentences
+# Identifying Navigation Cues in Stack Overflow Answers
 
-This repository holds the code and documents related to extracting conditional insight sentences. 
+This is the online artifact page/repository for the ASE '19 submission titled "Identifying Navigation Cues in Stack Overflow Answers".
 
-# Prereqisites 
+## Repo Overview
+
+* `SOAnalysisCode`: contains all the code we used to extract sentences using the four evaluated techniques: wordpatterns, lexrank, simpleif, and condinsights. 
+* `SurveyData`: contains a snapshot of all the data collected from our survey, which ended in May 2019.
+* `SurveyAnalysisCode`: contains the scripts we use to extract relevant data from the survey database and analyze it to produce the figures in the paper.
+
+## Extracting Navigation Cues Using the Four Techniques
+
+All the instructions in this section are based on running from the `SOAnalysisCode` directory.
+
+### Prerequisites
 
 * This code uses `python3`. Make sure you have python > 3.0 installed
 * The list of python packages used can be found in `requirements.txt`. You can individually install them or do `pip install -r requirements.txt`
 
+### How to Run
 
-# How to Run
+1. Create an StackExchange application key to be able to use the higher query limit at [https://stackapps.com/apps/oauth/register](StackExchange). In `SOAnalysisCode/src/main.py`, update the line `SITE = StackAPI('stackoverflow', key='ADD YOUR KEY HERE')` with your key.
 
-1. Make sure you have the Stanford CoreNLP server running. This can be done by downloading the Stanford Core NLP [lib files](https://stanfordnlp.github.io/CoreNLP/download.html) first. After unzipping, you can run:
+2. Run Stanford CoreNLP server running. This can be done by downloading the Stanford Core NLP [lib files](https://stanfordnlp.github.io/CoreNLP/download.html) first. We also have a copy of the zip file we used in this repository. After unzipping and changing to the unzipped folder, run:
+`java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000 -timeout 15000` 
 
-`java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000 -timeout 15000`
+3. Run `python3 src/main.py > output`. This will extract sentences by simpleif, wordpatterns, an condinsight. Format of output file is described below. Note that the patterns we use for the wordpatterns technique are available in the `patterns.txt` file. Also, note that this will produce a `stats.txt` file that contains statistics about number of paragraphs, sentences etc processed
 
-2. Run `python3 src/main.py > output`. 
+4. Getting lexrank sentences:
 
-3. To extract processed paragraphs (no html tags, links removed, and lemmatized words in the sentences) to be used with the lexrank approach, run `python3 src/lexrank.py`. This script reads question ids from the `question_ids.txt` file and then outputs the paragraph text of each thread from there in a `lexrank` directory.
+	* Put the ids of your target threads in `lexrank/question_ids.txt`  
+	* To extract processed paragraphs (no html tags, links removed, and lemmatized words in the sentences) to be used with the lexrank approach, run `python3 src/lexrank.py`. This script reads the target question ids from the `question_ids.txt` file and then outputs the paragraph text of each thread from there in a `lexrank` directory. Each thread has a corresponding text file.
+	* For each thread, simply concatenate the text in that file, and follow the instructions in the lexrank implementaiton we use at [https://github.com/linanqiu/lexrank](https://github.com/linanqiu/lexrank). 
 
-# Output format
+**IMPORTANT:** The SO query in our current code is hard-coded to the scope of our evaluation (json threads with score > 0 and asked between March 29, 2018 to March 29, 2019. If you want to run this for different data, make sure to update the query in `src/main.py`. The following line is what you are looking for `questions = SITE.fetch('questions', fromdate=datetime(2018,3,29), todate=datetime(2019,3,29), min=0, sort='votes', tagged='json', filter='!-*jbN-o8P3E5')`
 
-The output file will contain a `|`-separated output that matches the following header order `IsConditional|Question ID| Answer ID|Paragraph index|Sentence Position|Sentence| Condition|Tags|NFReqs|Nouns`. You can change the delimter used in `main.py`. Also, note that we currently print all sentences having `if` and mark the ones that match our criteria (i.e., have nouns matching SO tags in their condition) as True in the first column. This allows us to use all those that are False (i.e., just have the word `if` in them) as a naive baseline. 
+### Interpreting the Output format
 
-Right now, there is also output from the baseline technique that relies on matching any of the patterns in match any of the word patterns that are included in [`patterns.txt`](https://github.com/ualberta-smr/Benyamin-Conditional-Insights-Extraction/blob/master/patterns.txt) -- Martin Robillard's indispensible knowledge paper. The output will look the same as above, except that the first column will have the value `WordPatternBaseline` and the last 4 columns specific to conditional sentences will have empty values.
+The output file will contain a `|`-separated output that matches the following header order 
+`IsInsightFulIf|QuestionID|AnswerID|ParagraphIndex|SentenceIndex|Sentence|IsTruePositive|Condition|TagsInCondition|NFReqs|Nouns|Interrogative?|IsFirstPerson?|IsUnsurePhrase?|HasGrammarDep?`
+You can change the delimter used in `src/main.py`.
+
+Note that the `IsInsightFulIf` column will be `False` if the sentence is a simpleif sentence, will be `True` if the sentence is a condinsight sentence, and will be `WordPatternBaseline` if the sentence is a wordpattern sentence. 
+
+For the wordpattern technique, only the first 6 columns make sense. The remaining columns simply show information relevant to conditional sentences to help analyze the output.
+
+Please note that the `IsTruePositive` only makes sense in the context of benchmarking below. Ignore it when running normally.
+
+### Tests
+
+The `src/test.py` file has some unit tests for the individual heuristics to make sure they work correctly.
 
 
-## Structure
+### Benchmarks 
 
-* The `unusedfiles` folder under `src` contains old scripts that are currently not used. Just keeping them there now till we figure if we will need them again. The `read_db.py` is a script that needs a database file called "Witt.db" to work. I did not include the file here since it's too large (~1.4GB) but it's available on Google drive. This script extracts all the Stack Overflow tags (included in Tags.xml) and identifies their classification from the Witt.db database. It returns a dictionaty that other scripts use but can be modified to do anything you want with those classifications. This was Christoph's Witt database that we wanted to use to identify the type of tag (e.g., language, OS etc.), but we didn't end up using it and just simplified things to say we are interested in all sentences that have a conditional phrase matching a tag.
+We have a benchmark of 118 manually labelled sentences that we used to test various heuristics while developing the condinsight technique. The data for the benchmark is in the `benchmark` folder. `json_question_ids.txt` contains the Thread/Question ids of the threads involved in the benchmark and `benchmark_json_questions.csv` contains the ground truth.
+
+To run the benchmark, run `python3 src/run_benchmark.py`. The combination of heuristics is documented in the file. This calculates and outputs the precision and recall of each heuristic combination against the benchmark.
+The sentences detected by each combination of heuristics will be saved in the `benchmark/results` folder.
+
+**IMPORTANT:** Take these numbers with a grain of salt, since the benchmark is not based on looking at *all* sentences in the threads. Thus, the relative performance of heuristics is what counts here.
+
+## Survey Data
+
+* `SurveyDBDump/` contains a dump of the database that recorded all the responses during the survey. You can import this database locally by running `mysql -u <username> -p <password> db < FinalSurveyDump.sql`. Note that the sentences table contains the information about the sentences used in the DB. Since some sentences were detected by multiple techniques, we used numbers to denote the combinations such that each sentece is stored (and displayed to participants) only once. The file `techniques.txt` describes those numbers.
+* `SurveyAnalysis/` folder contains the scripts for analyzing the data:
+	* This folder contains python and R scripts for producing plots and analyzing the data. The `run_all.sh` script will first run the python script that read sdata from the database (assuming you already created it from the dump above) and extracts certain information from it that it will save as csv files in the `data/` folder. It then runs the R scripts that analyze this data and create the plots in the `figures` folder. Note that we did not end up using all figures in the paper.
+	* `data/` folder contains: 
+		* `ids.txt` is a file containing the participant ids that we consider in our results. This is basically the ids of participants that we paid (they satisfied our criteria as in the paper), whether they passed our quality gate thread or not. This quality-gate filtering happens in the analysis scripts.
+		* this folder will also be the target location for extracting data from the database during the survey results analysis. We currently include the results we have in that folder (which would get overridden when you run things and you should get the same files aanyways)	
+* `lexrank-results/` contains the lexrank results for the final selected 20 threads.
+* `QualitativeAnalysis/` contains a zip file of our open-coding for the various survey questions used to answer RQ2 and RQ3.
 
 
-* The `src` folder:
-    * `regex.py` is simply a list of regular expressions used to identify code terms in Stack Overflow text. 
-    * `main.py` is the main entry point of the program. It queries SO through the stackexchange API and then finds all conditional sentences in the paragraphs of the resulting answers. To try out a different technique (e.g. baselines to compare to), you can simply change the call of `find_cond_sentences` to a call that represents the entry point of the other technique.  
-    * `tags.py` reads the "Tags.xml" file and also includes a list of the keywords related to non functional requirements (from Abram Hindle's work) and also a list of modal verbs (which is something we looked into before and later gave up on). 
-    * TBD: add other descriptions
+## Extra Notes
 
-## Notes
+* If you want to see the sentences that received a median scoring greater than a given threshold (i.e., see the ground truth for that sentence), you will find various csv files in the `data` folder above that contain this information. For example, for question 10 (which is SR3 in the paper since questions were simply numbered in order in our DB), and threshold 4, you would check `q10_posvalues_threshold_4.csv`
 
-*  The current baseline pattern-based approach ignores the order of the patterns
 
 
