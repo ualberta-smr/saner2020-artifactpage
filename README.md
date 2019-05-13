@@ -21,7 +21,7 @@ All the instructions in this section are based on running from the `SOAnalysisCo
 
 1. Create an StackExchange application key to be able to use the higher query limit at [https://stackapps.com/apps/oauth/register](StackExchange). In `SOAnalysisCode/src/main.py`, update the line `SITE = StackAPI('stackoverflow', key='ADD YOUR KEY HERE')` with your key.
 
-2. Run Stanford CoreNLP server running. This can be done by downloading the Stanford Core NLP [lib files](https://stanfordnlp.github.io/CoreNLP/download.html) first. We also have a copy of the zip file we used in this repository. After unzipping and changing to the unzipped folder, run:
+2. Run Stanford CoreNLP server running. This can be done by downloading the Stanford Core NLP [lib files](https://stanfordnlp.github.io/CoreNLP/download.html) first. The one we downloaded was `stanford-corenlp-full-2018-02-27.zip`. After unzipping and changing to the unzipped folder, run:
 `java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000 -timeout 15000` 
 
 3. Run `python3 src/main.py > output`. This will extract sentences by simpleif, wordpatterns, an condinsight. Format of output file is described below. Note that the patterns we use for the wordpatterns technique are available in the `patterns.txt` file. Also, note that this will produce a `stats.txt` file that contains statistics about number of paragraphs, sentences etc processed
