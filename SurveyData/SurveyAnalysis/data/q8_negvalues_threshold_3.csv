@@ -1,0 +1,28 @@
+"","SentenceID","SentenceText","Response.median","Technique"
+"1","173","But if you need to use older versions:",2,1
+"5","181","and perhaps a third, but a casual scan of the Construct project pages doesn't tell me if it is available: have Construct output JSON or at least a JSON-compatible dictionary, perhaps by using adapters.",2,1
+"9","192","Do add proper error handling like if file does not exists, then send back <code>404</code> using something like below:",2,1
+"10","193","Please use this method carefully and only if you know what you are doing.",2,1
+"17","203","Or if your object can be an array or not an array (but it sounds a little bit strange) you could try to cast to several possible types.",2,1
+"20","206","If you're correctly sending change/delete requests - they will be memorized and refresh will read updated data (if not cached).",2,1
+"21","208","People might be able to give better answers if you include the following:",2,1
+"25","212","If you have something assigned to x, e.g. <code>x = object1</code>, then if you write <code>x = object2</code>, that does not influence <code>object1</code>* (or any other data, for that matter) in any way.",2,1
+"26","214","(*) Although the original data is not modified by this, it may be ""deleted"" i.e. it's memory may be freed if it is no longer referenced by any variable, because it is no longer needed.",2,1
+"29","218","If it passes this validation then you check if it exceedes the max value of your input.",2,1
+"30","220","For example if the given date range is valid.",2,1
+"31","221","Stating this, if a returning error code cannot be used to figure out the exact problem of the request, the design of the API interface <strong>might</strong> be not optimal.",2,1
+"33","224","Please tell me if you need help for Swift translation :)",2,1
+"36","228","I hope the explanation makes sense and check the documentation if you need more info.",2,1
+"4","192","Do add proper error handling like if file does not exists, then send back <code>404</code> using something like below:",2,2
+"7","203","Or if your object can be an array or not an array (but it sounds a little bit strange) you could try to cast to several possible types.",2,2
+"12","218","If it passes this validation then you check if it exceedes the max value of your input.",2,2
+"13","220","For example if the given date range is valid.",2,2
+"14","224","Please tell me if you need help for Swift translation :)",2,2
+"15","228","I hope the explanation makes sense and check the documentation if you need more info.",2,2
+"71","199","I also want to point out that <code>||</code> is not only making the checking of the statement concise, it also allows you to chain further checks in your sorting requirement.",2,3
+"91","207","If it's a SPA (Single Page App) there is no need for refresh - it shouldn't happen.",2,3
+"11","213","What you actually want is to modify <code>data</code>, so you should do so, e.g.",2,3
+"121","219","For the min value, the user cannot enter something below <code>0</code> because to do that he should be able to write <code>-</code>, which doesn't pass the first condition ( numbers only )",2,3
+"6","242","You can then access your <code>user.json</code> in the folder <code>/api/user.json</code> at <code>localhost:8081/api/user.json</code>",2,6
+"101","247","After <code>item = update</code>, variable <code>item</code> no longer references an item from <code>data</code>, it references a different variable: <code>update</code>.",2,6
+"151","253","You're not looping over an Array, you are looping over the properties of an Object with a <a href=""https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in"" rel=""nofollow noreferrer""><code>for...in</code></a> loop.",2,6

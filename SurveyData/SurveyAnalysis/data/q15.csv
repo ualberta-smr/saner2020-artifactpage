@@ -1,0 +1,44 @@
+ResponseID,User_ID,SentenceID,SentenceText,Response
+950,1abff8f3c01fdafd3bcd19f87c394ce4,-3,-1,the information which is Central to solving my specific problem
+1135,e00a907093d3662aa176f39e14952433,-3,-1,I would like the most relevant solution to be highlighted.
+1194,5857532ecc165a002982034e30107bdf,-3,-1,Basic sentences explaining a workflow on how to fix the problem?
+1247,d1a66d7119f95c8f2c9361ec9f55a951,-3,-1,Posts sometimes contain several pages of text. Highlighting a one or two sentence summary might be useful.
+1298,e65bb7c765458b48e9ecc690c047e57e,-3,-1,Pertinent answers to the questions mostly
+1501,5ae06be6dd4e8581d5c90c40188c4897,-3,-1,I would like to see direct answers and warnings.
+1759,86a32f171475d4ad42af11c4cbb1eaf1,-3,-1,"Unique tips, like you'd find in a book."
+1810,ff6c7319934da003d2cc3cf520715006,-3,-1,"I personally don't think stack overflow should do any kind of highlighting. Maybe a subject or header or something, but other than that I wouldn't do it at all. "
+1859,a3f1676dc2e47d8d53c2a7c129a67b30,-3,-1,I would like to see information highlighted that has been confirmed to be an accurate response to the question.
+1881,008b58b84d46a50e0332032e0d3d9e3a,-3,-1,Relevant information about the problem
+1901,d6cef22e92c1343285684a3e993e6bd3,-3,-1,Direct solutions to the problem.
+1911,7f9418fde2cfedcdde148dbdbb94d5fe,-3,-1,what the code says and important points
+2338,c0987233440ef3ca8ad15efbe319b9fe,-3,-1,Specific function calls and keywords
+2483,2a8581d33179ed475cf9cfcada387e57,-3,-1,I want to see pratical informations and code I would use quickly before to make lesson of computer or language science
+2655,1bd1c455f2839dc7cbc6251537f3da8c,-3,-1,tips and guides
+2753,b5c68f66246b451c0f65518977e7a241,-3,-1,The important aspects like the explanation of the cause of the problem and the main information to solve it.
+2836,3e51e4b28d98fafdb6af2a476e01ca7a,-3,-1,non i dont like the highlights
+2979,5c1e42105e8b0f72d95a7580f24fb393,-3,-1,Maybe like upvoted sentences which give you the solution in a quick manner. 
+3191,1e291d9f8c99470ffa480486a34873f5,-3,-1,"It would be nice to have areas that include the keywords I have searched for, or even a footnote that would offer suggested sites of reading to better understand the answers."
+3293,46a48d98a47aeb653879015c3361fa64,-3,-1,information pertinent to my original post.
+3901,190b2cf87a5569b0aa93aacda8da876a,-3,-1,I would like to see the most relevant information and the actual solution highlighted.
+4332,c53ab511afc9daa4c139b32cfb3911df,-3,-1,"The info that the person who answered himself thought to be most relevant should be highlighted. In other words, the person answering the question should himself highlight the most relevant part of his answer."
+4552,6ec5e178e529f6b2f418bf478f2ce59c,-3,-1,"I would like them to just highlight information that they know to fully answer the question. A lot of questions can be answered by simple one-liners or single sentences, and highlighting these answers would be excellent."
+4762,567145b16da60b17212073e933b46886,-3,-1,"The core of the solution. For instance, ""to interpret JSON easily, use Jquery."" Or specific code highlights that are highly relevant."
+5003,b0b07d3a799b71ba702f4c5da29f27b9,-3,-1,"Key elements of solutions, technologies required, steps to take."
+5146,dc6630e697579eeb3bb390355349868b,-3,-1,Want to see the code in the thread. 
+5495,11e321cebd307d56075b6bf9ca4248c7,-3,-1,Answers that have the highest votes or highest highlights by other contributors like in Medium
+5501,5e1008f67932df8c7b022882d312205d,-3,-1,I would like to see sentences that either answer the question or introduce a solution.
+5742,57dd37df7c9b09ff65cdf930d2a600ed,-3,-1,"Terms, Matches, other user highlighted sentences."
+5887,340e8782e70cce8dbf3be406e1ef505e,-3,-1,"Facts, recipes and explanations"
+5951,4147da6320a499a7706a4cb34679ceae,-3,-1,output of the program
+6031,9e474d6b2dda6f02fe5a5381b2ae7dd1,-3,-1,some thing like a links to keywords
+6552,7a950c0d4743490af403d1b63f6735d6,-3,-1,Not sure
+6690,40911285d6743fcd280b5badd29bd31c,-3,-1,Any links to programs or interfaces that are the direct solution.
+6912,36d239cfa27dd388296579a4d24afb15,-3,-1,The sentences or words which contain important information regarding the problem's solution that suggests me that those sentences or words might be part of possible solutions.
+7056,0f6f9cc0bcb338401e6e9ad2aac3aa7f,-3,-1,"Full in context, relevant answers."
+7159,a95f5fba5e1b799bd7aa667fb1c5cd08,-3,-1,Highlighting the parts of an answer that most clearly address specific points in the question are best. Highlighting aspects of the answer that link me to other pertinent information would also be good.
+7224,94269079ab46deae14277decb3e44399,-3,-1,I would like to have proper GUI with less chaotic navigation.
+7530,2ebf68fd3883774de5aeeaafdefae460,-3,-1,Explanation of code.
+7594,e0189a864102ab9974837b37cb0f2c9d,-3,-1,Any instances that link to relevant information on a topic or a user's explanation on why their response is relevant to the question.
+7808,437132e2719f79b06bcc330b5c8d827b,-3,-1,Answers that have been 'verified' that work for other people. 
+7881,aed31d20356f4f21667630fbaf6d6f11,-3,-1,Information that is directly relevant to my question
+8045,eb47749ec4c3a53610bd5bc502cc6672,-3,-1,"answers, tips"

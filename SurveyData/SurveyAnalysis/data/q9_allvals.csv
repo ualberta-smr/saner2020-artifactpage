@@ -1,0 +1,120 @@
+"","SentenceID","Technique","SentenceText","Response.median"
+"1","173",1,"But if you need to use older versions:",3
+"2","175",3,"Then your <code>typings.d.ts</code> should be in the <code>src</code> directory as described in <code>include</code> property",3
+"3","177",1,"Don't mix <code>var</code> and <code>let</code>/<code>const</code> - if you're using ES6, which you should be, always use <code>const</code>, except when you need to reassign, in which case use <code>let</code>.",4
+"4","177",3,"Don't mix <code>var</code> and <code>let</code>/<code>const</code> - if you're using ES6, which you should be, always use <code>const</code>, except when you need to reassign, in which case use <code>let</code>.",4
+"5","178",1,"Next we add custom getter and setter for public property which checks each it is invoked if <code>_isPlaying</code> is null.",4
+"6","179",1,"And if so it returns your default value.",3
+"7","179",2,"And if so it returns your default value.",3
+"8","180",3,"Otherwise you should consider using another json library like Jackson which as I know supports Kotlin well.",4
+"9","181",1,"and perhaps a third, but a casual scan of the Construct project pages doesn't tell me if it is available: have Construct output JSON or at least a JSON-compatible dictionary, perhaps by using adapters.",3
+"10","183",3,"In this case skipping just by type should suffice, but in case the <code>_io</code> key holds some other undesirable data this guarantees it won't be in the final result.",4
+"11","184",1,"Of course, if your structure contains some other exotic data or data that is represented in JSON differently based on its type, this approach might mess it up as it turns all mappings into <code>dict</code> and all sequences into <code>list</code>.",3.5
+"12","184",2,"Of course, if your structure contains some other exotic data or data that is represented in JSON differently based on its type, this approach might mess it up as it turns all mappings into <code>dict</code> and all sequences into <code>list</code>.",3.5
+"13","189",1,"Another thing to notice, is that <code>require</code> is synchronous, so if your JSON is specially large, the first time you instanciate <code>MyClass</code> the event loop will be blocked.",4
+"14","191",1,"I'd only put <code>require</code> inside the constructor if it was a dynamic dependency, like <code>const wordlist = require(</code>./config/lang/${lang}.json<code>)</code>.",5
+"15","191",2,"I'd only put <code>require</code> inside the constructor if it was a dynamic dependency, like <code>const wordlist = require(</code>./config/lang/${lang}.json<code>)</code>.",5
+"16","192",1,"Do add proper error handling like if file does not exists, then send back <code>404</code> using something like below:",3
+"17","192",2,"Do add proper error handling like if file does not exists, then send back <code>404</code> using something like below:",3
+"18","193",1,"Please use this method carefully and only if you know what you are doing.",4
+"19","194",3,"If you do not wanted to create a designated directory (in this case 'public' folder) and put all your top level folders there in order to access it.",4
+"20","195",1,"Loop through the object and check to see if car1 exists on the next level down.",4
+"21","195",2,"Loop through the object and check to see if car1 exists on the next level down.",4
+"22","196",1," The good news is this will work if given an Array of objects as well instead of a nested Object, but only because we don't care about the keys that hold the objects and only that an object actually has a 'car1' property",4
+"23","196",3," The good news is this will work if given an Array of objects as well instead of a nested Object, but only because we don't care about the keys that hold the objects and only that an object actually has a 'car1' property",4
+"24","197",1,"Check the result of <code>localeCompare</code> on the property <code>user</code>, if it is either <code>-1</code> or <code>1</code> then return that result.",4.5
+"25","197",2,"Check the result of <code>localeCompare</code> on the property <code>user</code>, if it is either <code>-1</code> or <code>1</code> then return that result.",4.5
+"26","198",1,"This works because <code>||</code> will only consider the second component if the <code>localeCompare</code> is zero.",4
+"27","199",3,"I also want to point out that <code>||</code> is not only making the checking of the statement concise, it also allows you to chain further checks in your sorting requirement.",4
+"28","200",1,"This alternative compares the usernames first <strong>(faster than a precipitated localeCompare execution)</strong>, if they are equal then a common comparison between integers is executed.",4
+"29","201",3,"You should cast your data to the <code>[[String: Any]]</code> type because you have array in response.",4
+"30","202",1,"Or if you want to get just only one <code>[String: Any]</code> object from response you can write:",4
+"31","203",1,"Or if your object can be an array or not an array (but it sounds a little bit strange) you could try to cast to several possible types.",3
+"32","203",2,"Or if your object can be an array or not an array (but it sounds a little bit strange) you could try to cast to several possible types.",3
+"33","204",1,"You can use session storage if you want the data to be retrieved once <strong>PER SESSION</strong> or local storage if you want to have better control of the data's ""expiration"".",5
+"34","205",1,"You could put the data in <a href=""https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage"" rel=""nofollow noreferrer""><code>localStorage</code></a> and always check if there is some data there before doing the request.",5
+"35","205",2,"You could put the data in <a href=""https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage"" rel=""nofollow noreferrer""><code>localStorage</code></a> and always check if there is some data there before doing the request.",5
+"36","206",1,"If you're correctly sending change/delete requests - they will be memorized and refresh will read updated data (if not cached).",3
+"37","207",3,"If it's a SPA (Single Page App) there is no need for refresh - it shouldn't happen.",2.5
+"38","208",1,"People might be able to give better answers if you include the following:",1.5
+"39","209",1,"If your json contains from 0.....N number of persons then <code>BatchUpdate</code> is good solution for you this may reduce your database round trip if you have performance requirement",4
+"40","209",2,"If your json contains from 0.....N number of persons then <code>BatchUpdate</code> is good solution for you this may reduce your database round trip if you have performance requirement",4
+"41","209",3,"If your json contains from 0.....N number of persons then <code>BatchUpdate</code> is good solution for you this may reduce your database round trip if you have performance requirement",4
+"42","210",1,"<a href=""https://jishnutkl.wordpress.com/tag/mysql-bulk-insert-from-c-net/"" rel=""nofollow noreferrer"">Here</a> is good article if you have to use <code>StoedProcedure</code> as insert command.",3
+"43","211",1,"<code>for item in data:
+    if item['hostname'] == 'c.example.com':
+       item.update(update)
+</code>
+This works only if the keys in your <code>update</code> variable overlap with the keys in the item.",4
+"44","211",2,"<code>for item in data:
+    if item['hostname'] == 'c.example.com':
+       item.update(update)
+</code>
+This works only if the keys in your <code>update</code> variable overlap with the keys in the item.",4
+"45","212",1,"If you have something assigned to x, e.g. <code>x = object1</code>, then if you write <code>x = object2</code>, that does not influence <code>object1</code>* (or any other data, for that matter) in any way.",3
+"46","213",3,"What you actually want is to modify <code>data</code>, so you should do so, e.g.",2
+"47","214",1,"(*) Although the original data is not modified by this, it may be ""deleted"" i.e. it's memory may be freed if it is no longer referenced by any variable, because it is no longer needed.",2
+"48","215",1,"and you will also have to add the <code>async</code> keyword to your top function that wraps your code, but if this is a website you'll need to use babel for this to work in all browsers.",3
+"49","215",2,"and you will also have to add the <code>async</code> keyword to your top function that wraps your code, but if this is a website you'll need to use babel for this to work in all browsers.",3
+"50","217",1,"You can use this regex if you have to use <code>type=""text""</code>",4
+"51","218",1,"If it passes this validation then you check if it exceedes the max value of your input.",3
+"52","218",2,"If it passes this validation then you check if it exceedes the max value of your input.",3
+"53","219",3,"For the min value, the user cannot enter something below <code>0</code> because to do that he should be able to write <code>-</code>, which doesn't pass the first condition ( numbers only )",3
+"54","220",1,"For example if the given date range is valid.",2
+"55","220",2,"For example if the given date range is valid.",2
+"56","221",1,"Stating this, if a returning error code cannot be used to figure out the exact problem of the request, the design of the API interface <strong>might</strong> be not optimal.",4
+"57","222",3,"But I think in your case, you should rather investigate why the client is unable to display the <code>errorMsg</code> - this should be the best and most flexible way to go to add additional validations in the future.",4
+"58","223",1,"Then, if the content may have been updated, you should override the previously downloaded files with the new ones, at app launch.",4
+"59","224",1,"Please tell me if you need help for Swift translation :)",2
+"60","224",2,"Please tell me if you need help for Swift translation :)",2
+"61","225",1,"regarding sending app to background , the content won't reset if the app is left working by IOS , but if closed you will get a new launch when you open it again with array content is initiated from the begining",4
+"62","227",1,"Pay attention if you need to serialize the data.",3.5
+"63","228",1,"I hope the explanation makes sense and check the documentation if you need more info.",1
+"64","228",2,"I hope the explanation makes sense and check the documentation if you need more info.",1
+"65","229",3,"The function needs to be of type JsonResult, and the returned value of Json using  JsonRequestBehavior.AllowGet.",4
+"66","230",3,"If you use console.log the result returned from the mvc controller and view it in the browser inspect you'll see the object with lots of other info and the values you want are in the .data section of the object.",4.5
+"67","231",1,"Probably, the compiler is giving you a warning, but allows you to have such a constructor, even if it will result in undefined behavior or <strong>slicing</strong> an instance of <code>MyObject</code> every time it is passed by value.",4
+"68","231",3,"Probably, the compiler is giving you a warning, but allows you to have such a constructor, even if it will result in undefined behavior or <strong>slicing</strong> an instance of <code>MyObject</code> every time it is passed by value.",4
+"69","232",1,"Furthermore, if you want to exploit polymorphic behavior you must use pointers, even if there is no explicit need to cast to derived classes in your code, as far as I can see.",4
+"70","232",2,"Furthermore, if you want to exploit polymorphic behavior you must use pointers, even if there is no explicit need to cast to derived classes in your code, as far as I can see.",4
+"71","233",1,"If your code uses the class as a <code>QObject</code> for any reason other than to get meta information, you are almost certainly using it incorrectly if you are trying to store it by value (as explained by G. Giordano in their answer).",4
+"72","234",1,"Overwrites the existing file if the file exists.",3.5
+"73","234",2,"Overwrites the existing file if the file exists.",3.5
+"74","234",6,"Overwrites the existing file if the file exists.",3.5
+"75","235",1,"You'll also need to account for the file not yet existing, and if you don't want to wait for locks forever, you need to handle timeouts (meaning you need to use <code>LOCK_NB</code> <em>in a loop</em> and test for the return value to see if the lock was acquired, until a certain amount of time has passed).",5
+"76","236",1,"In the following context manager, I used the <code>os.open()</code> low-level system call to ensure the file is created when trying to lock it for exclusive access <em>without truncating it if it already exists</em>:",4.5
+"77","237",3,"If you want to allow for a timeout, add a <code>try/except</code> block around the <code>with</code> block and catch the <code>Timeout</code> exception; you'll need to decide what should happen then:",4
+"78","238",6,"This validation error message should be human-readable and it should be okay for the client to display it to the user.",4
+"79","239",6,"If it returned a falsy value (<strong>i.e.</strong> <code>0</code>) then the value of the other operand of <code>||</code> will be returned (which is sorting by <code>timestamp</code>)",4
+"80","240",6,"Misuse considerations aside, in order to JSON-ify a <code>QVariant</code> that stores a <code>QObject</code> subclass by value, you can use the <code>QMetaType::create</code> method and pass it the user type id and <code>yourQVariant.constData()</code>.",4
+"81","241",1,"But if you have an <code>include</code> property in your <code>tsconfig.json</code>:",3
+"82","241",2,"But if you have an <code>include</code> property in your <code>tsconfig.json</code>:",3
+"83","241",6,"But if you have an <code>include</code> property in your <code>tsconfig.json</code>:",3
+"84","242",6,"You can then access your <code>user.json</code> in the folder <code>/api/user.json</code> at <code>localhost:8081/api/user.json</code>",2
+"85","243",6,"You are trying to cast to <code>[String: Any]</code>, but you have an array of <code>[String: Any]</code> because your response enclosed in <code>[]</code> brackets.",4
+"86","245",1,"Use <code>.reduce</code> to convert the array into an object, as you're doing, but then you need to <code>.find</code> twice to see if the matching <code>name</code> and then if the matching <code>value</code> object exists.",5
+"87","245",2,"Use <code>.reduce</code> to convert the array into an object, as you're doing, but then you need to <code>.find</code> twice to see if the matching <code>name</code> and then if the matching <code>value</code> object exists.",5
+"88","245",6,"Use <code>.reduce</code> to convert the array into an object, as you're doing, but then you need to <code>.find</code> twice to see if the matching <code>name</code> and then if the matching <code>value</code> object exists.",5
+"89","246",6,"Normally one of the layers requires the use of services and you can have your controllers and your services (the place where you get the raw data from the server and you make the request.",3.5
+"90","247",6,"After <code>item = update</code>, variable <code>item</code> no longer references an item from <code>data</code>, it references a different variable: <code>update</code>.",3
+"91","249",6,"Otherwise, it returns the value stored in <code>_isPlaying</code>",3
+"92","250",6,"If your input field values are numbers, then you can use input type 'number' .",4
+"93","251",1,"<code>fetch</code> returns a <code>Promise</code>, so if you want to use slice method, you should use it inside the last <code>.then()</code>, but it would be better if you fetch your data in <code>componentDidMount</code>, save your data in React state, and after that use in <code>render</code> method;",4.5
+"94","251",3,"<code>fetch</code> returns a <code>Promise</code>, so if you want to use slice method, you should use it inside the last <code>.then()</code>, but it would be better if you fetch your data in <code>componentDidMount</code>, save your data in React state, and after that use in <code>render</code> method;",4.5
+"95","251",6,"<code>fetch</code> returns a <code>Promise</code>, so if you want to use slice method, you should use it inside the last <code>.then()</code>, but it would be better if you fetch your data in <code>componentDidMount</code>, save your data in React state, and after that use in <code>render</code> method;",4.5
+"96","252",3,"So, yes, in my opinion, <code>require</code> calls should be at the top, unless you know what you're doing, or you're loading a dynamic dependency.",4
+"97","252",6,"So, yes, in my opinion, <code>require</code> calls should be at the top, unless you know what you're doing, or you're loading a dynamic dependency.",4
+"98","253",6,"You're not looping over an Array, you are looping over the properties of an Object with a <a href=""https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in"" rel=""nofollow noreferrer""><code>for...in</code></a> loop.",4
+"99","254",6,"Solution :- <em>You must use database</em> , when you save data you do it in db , when you delete data , you delete it from db &amp; when you fetch data then you fetch from db.",4
+"100","255",3,"regarding the download every launch , i recommend having expire or new data flag , you should store them in a file/coreData or any other alternative and , it's best to implement <code>Codable</code> , to read them as <code>Data</code> to objects and vice versa when saving",4
+"101","255",6,"regarding the download every launch , i recommend having expire or new data flag , you should store them in a file/coreData or any other alternative and , it's best to implement <code>Codable</code> , to read them as <code>Data</code> to objects and vice versa when saving",4
+"102","257",6,"and here how you can insert to db :
+for ADO.Net : <a href=""https://msdn.microsoft.com/en-us/library/ms233812.aspx"" rel=""nofollow noreferrer"">https://msdn.microsoft.com/en-us/library/ms233812.aspx</a>",4
+"103","258",1,"<a href=""https://docs.python.org/3/library/json.html#json.dump"" rel=""nofollow noreferrer""><code>skipkeys</code></a> doesn't do what you might think it does - it instructs the <a href=""https://docs.python.org/3/library/json.html#json.JSONEncoder"" rel=""nofollow noreferrer""><code>json.JSONEncoder</code></a> to skip keys that are not of a <em>basic</em> type, not the values of the keys - i.e. if your had a <code>dict</code> <code>{object(): ""foobar""}</code> it would skip the <code>object()</code> key, whereas without <code>skipkeys</code> set to <code>True</code> it would raise a <code>TypeError</code>.",4.5
+"104","258",6,"<a href=""https://docs.python.org/3/library/json.html#json.dump"" rel=""nofollow noreferrer""><code>skipkeys</code></a> doesn't do what you might think it does - it instructs the <a href=""https://docs.python.org/3/library/json.html#json.JSONEncoder"" rel=""nofollow noreferrer""><code>json.JSONEncoder</code></a> to skip keys that are not of a <em>basic</em> type, not the values of the keys - i.e. if your had a <code>dict</code> <code>{object(): ""foobar""}</code> it would skip the <code>object()</code> key, whereas without <code>skipkeys</code> set to <code>True</code> it would raise a <code>TypeError</code>.",4.5
+"105","262",1,"You shouldn't use <code>contains/1</code> as it will not work the way you might expect it",5
+"106","262",3,"You shouldn't use <code>contains/1</code> as it will not work the way you might expect it",5
+"107","263",1,"It will recursively check if all parts are contained.",4
+"108","264",1,"So not only will it check if the string is contained in the array, but if the string is also a substring",4.5
+"109","264",2,"So not only will it check if the string is contained in the array, but if the string is also a substring",4.5
+"110","264",6,"So not only will it check if the string is contained in the array, but if the string is also a substring",4.5

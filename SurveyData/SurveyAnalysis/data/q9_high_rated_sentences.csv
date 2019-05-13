@@ -1,0 +1,19 @@
+SentenceID,Technique,SentenceText
+183,3,"In this case skipping just by type should suffice, but in case the <code>_io</code> key holds some other undesirable data this guarantees it won't be in the final result."
+189,1,"Another thing to notice, is that <code>require</code> is synchronous, so if your JSON is specially large, the first time you instanciate <code>MyClass</code> the event loop will be blocked."
+202,1,Or if you want to get just only one <code>[String: Any]</code> object from response you can write:
+204,1,"You can use session storage if you want the data to be retrieved once <strong>PER SESSION</strong> or local storage if you want to have better control of the data's ""expiration""."
+205,2,"You could put the data in <a href=""https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage"" rel=""nofollow noreferrer""><code>localStorage</code></a> and always check if there is some data there before doing the request."
+217,1,"You can use this regex if you have to use <code>type=""text""</code>"
+225,1,"regarding sending app to background , the content won't reset if the app is left working by IOS , but if closed you will get a new launch when you open it again with array content is initiated from the begining"
+229,3,"The function needs to be of type JsonResult, and the returned value of Json using  JsonRequestBehavior.AllowGet."
+230,3,If you use console.log the result returned from the mvc controller and view it in the browser inspect you'll see the object with lots of other info and the values you want are in the .data section of the object.
+239,6,If it returned a falsy value (<strong>i.e.</strong> <code>0</code>) then the value of the other operand of <code>||</code> will be returned (which is sorting by <code>timestamp</code>)
+245,8,"Use <code>.reduce</code> to convert the array into an object, as you're doing, but then you need to <code>.find</code> twice to see if the matching <code>name</code> and then if the matching <code>value</code> object exists."
+250,6,"If your input field values are numbers, then you can use input type 'number' ."
+251,10,"<code>fetch</code> returns a <code>Promise</code>, so if you want to use slice method, you should use it inside the last <code>.then()</code>, but it would be better if you fetch your data in <code>componentDidMount</code>, save your data in React state, and after that use in <code>render</code> method;"
+252,9,"So, yes, in my opinion, <code>require</code> calls should be at the top, unless you know what you're doing, or you're loading a dynamic dependency."
+258,7,"<a href=""https://docs.python.org/3/library/json.html#json.dump"" rel=""nofollow noreferrer""><code>skipkeys</code></a> doesn't do what you might think it does - it instructs the <a href=""https://docs.python.org/3/library/json.html#json.JSONEncoder"" rel=""nofollow noreferrer""><code>json.JSONEncoder</code></a> to skip keys that are not of a <em>basic</em> type, not the values of the keys - i.e. if your had a <code>dict</code> <code>{object(): ""foobar""}</code> it would skip the <code>object()</code> key, whereas without <code>skipkeys</code> set to <code>True</code> it would raise a <code>TypeError</code>."
+262,4,You shouldn't use <code>contains/1</code> as it will not work the way you might expect it
+263,1,It will recursively check if all parts are contained.
+264,8,"So not only will it check if the string is contained in the array, but if the string is also a substring"

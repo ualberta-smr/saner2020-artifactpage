@@ -1,0 +1,7 @@
+"","Pair","pvalue","EffSize","Diff"
+"difference in location","lexrank-wordpattern",0.281,0.066,0
+"2","condinsight-wordpattern",0.266,0.092,0
+"3","simpleif-wordpattern",0.578,0.022,0
+"4","condinsight-lexrank",0.055,0.151,0
+"5","simpleif-lexrank",0.204,0.068,0
+"6","simpleif-condinsight",0.338,0.046,0

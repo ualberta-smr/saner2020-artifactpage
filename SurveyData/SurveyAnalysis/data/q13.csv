@@ -1,0 +1,43 @@
+ResponseID,User_ID,SentenceID,SentenceText,Response
+948,1abff8f3c01fdafd3bcd19f87c394ce4,-3,-1,"I gave low ratings to sentences like hope this helps, which do not carry any meaningful information"
+1133,e00a907093d3662aa176f39e14952433,-3,-1,They did not help solve the question asked.
+1192,5857532ecc165a002982034e30107bdf,-3,-1,"Whether or not the post itself was useful, what other people had to say about that post."
+1245,d1a66d7119f95c8f2c9361ec9f55a951,-3,-1,The least useful sentences were those that explained minor little details that had little to do with the main issue.
+1296,e65bb7c765458b48e9ecc690c047e57e,-3,-1,Mostly they were rated low simply on the fact that they weren't important to the question at hand.
+1499,5ae06be6dd4e8581d5c90c40188c4897,-3,-1,The relevance of the information.
+1757,86a32f171475d4ad42af11c4cbb1eaf1,-3,-1,Were not particularly helpful and/or on-topic.
+1809,ff6c7319934da003d2cc3cf520715006,-3,-1,"Sentences that I found useless/unimportant were either speculation or not related to the original question. Speculation isn't particularly useful, I can speculate myself, I'm going to stackoverflow to try to resolve some of my own speculations. "
+1857,a3f1676dc2e47d8d53c2a7c129a67b30,-3,-1,Most of the ones that were not as useful were just wrapping up things or not related to the question.
+1879,008b58b84d46a50e0332032e0d3d9e3a,-3,-1,The main thing is that the sentences are irrelevant to the problem.
+1900,d6cef22e92c1343285684a3e993e6bd3,-3,-1,"Sentences that are unnecessarily complicated aren't especially helpful. Superfluous comments like ""hope this helps"" should not be highlighted. "
+1909,7f9418fde2cfedcdde148dbdbb94d5fe,-3,-1,the line is irrelevant to the issue 
+2336,c0987233440ef3ca8ad15efbe319b9fe,-3,-1,"General text, when multiple areas were highlighted, I also didn't find links highlighted to be that useful"
+2481,2a8581d33179ed475cf9cfcada387e57,-3,-1,it would be good idea to help user
+2653,1bd1c455f2839dc7cbc6251537f3da8c,-3,-1,I don't have any opinion
+2751,b5c68f66246b451c0f65518977e7a241,-3,-1,Too generic (example read documentation)
+2834,3e51e4b28d98fafdb6af2a476e01ca7a,-3,-1,usually people saying good luck
+2977,5c1e42105e8b0f72d95a7580f24fb393,-3,-1,"I think there were highlights for things that were more supplemental that, while helpful, weren't addressing the major or central point. "
+3189,1e291d9f8c99470ffa480486a34873f5,-3,-1,They offered no real help due to just being filler sentences or they did not address the issue being asked about.
+3291,46a48d98a47aeb653879015c3361fa64,-3,-1,"extraneous information, redundant answers. off topic responses."
+3899,190b2cf87a5569b0aa93aacda8da876a,-3,-1,The ones that weren't useful seemed to misinterpret the user's question/situation or they made an assumption or added something that made the answer not useful to the user's particular specific situation.
+4330,c53ab511afc9daa4c139b32cfb3911df,-3,-1,Some highlighted sentences felt of no use without the context of the immediate text that came after them.
+4550,6ec5e178e529f6b2f418bf478f2ce59c,-3,-1,The ones that weren't useful were usually sentence fragments because they were extending the information provided by a previous sentence (but weren't useful on their own.)
+4761,567145b16da60b17212073e933b46886,-3,-1,They didn't have any information in them. They were simply affirmative statements.
+5001,b0b07d3a799b71ba702f4c5da29f27b9,-3,-1,Mostly farewell sentences which provide no information.
+5144,dc6630e697579eeb3bb390355349868b,-3,-1,There is no keywords and no methods in the sentence.
+5493,11e321cebd307d56075b6bf9ca4248c7,-3,-1,The lack of relevance or actionable advice to the question posed
+5499,5e1008f67932df8c7b022882d312205d,-3,-1,"I think I saw only one totally useless sentence.  There were a number of sentences that were interesting and possibly helpful, but didn't actually answer the question."
+5740,57dd37df7c9b09ff65cdf930d2a600ed,-3,-1,No
+5885,340e8782e70cce8dbf3be406e1ef505e,-3,-1,I rated lower sentences not conveying information
+5949,4147da6320a499a7706a4cb34679ceae,-3,-1,no
+6029,9e474d6b2dda6f02fe5a5381b2ae7dd1,-3,-1,assumtions
+6550,7a950c0d4743490af403d1b63f6735d6,-3,-1,"The personal touches of ""good luck"" and ""that worked for me"" aren't useful"
+6688,40911285d6743fcd280b5badd29bd31c,-3,-1,Any personal information or information that was just suggestions instead of solutions.
+6910,36d239cfa27dd388296579a4d24afb15,-3,-1,The sentences do not contain any information regarding the actual solution to the problem. 
+7054,0f6f9cc0bcb338401e6e9ad2aac3aa7f,-3,-1,Being meaningless out of context.
+7222,94269079ab46deae14277decb3e44399,-3,-1,Some answers have the sentences correct but there is no proper solution given.
+7528,2ebf68fd3883774de5aeeaafdefae460,-3,-1,Closing statements or filler sentences.
+7593,e0189a864102ab9974837b37cb0f2c9d,-3,-1,"When they did not explain their logic, or just gave constructive criticism without providing any help to the actual question, then it lowered my rating. "
+7806,437132e2719f79b06bcc330b5c8d827b,-3,-1,No examples of how the answer would be applied in context to the question. 
+7879,aed31d20356f4f21667630fbaf6d6f11,-3,-1,"If they are meaningful but not DIRECTLY relevant to the question, they get a lower rate"
+8043,eb47749ec4c3a53610bd5bc502cc6672,-3,-1,Opinions don't matter in dev

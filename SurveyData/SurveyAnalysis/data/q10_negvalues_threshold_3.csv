@@ -1,0 +1,10 @@
+"","SentenceID","SentenceText","Response.median","Technique"
+"21","208","People might be able to give better answers if you include the following:",2,1
+"26","214","(*) Although the original data is not modified by this, it may be ""deleted"" i.e. it's memory may be freed if it is no longer referenced by any variable, because it is no longer needed.",2,1
+"30","220","For example if the given date range is valid.",2,1
+"33","224","Please tell me if you need help for Swift translation :)",2,1
+"36","228","I hope the explanation makes sense and check the documentation if you need more info.",1,1
+"13","220","For example if the given date range is valid.",2,2
+"14","224","Please tell me if you need help for Swift translation :)",2,2
+"15","228","I hope the explanation makes sense and check the documentation if you need more info.",1,2
+"11","213","What you actually want is to modify <code>data</code>, so you should do so, e.g.",2,3

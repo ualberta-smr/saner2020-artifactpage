@@ -1,0 +1,5 @@
+SentenceID,Technique,SentenceText
+203,2,Or if your object can be an array or not an array (but it sounds a little bit strange) you could try to cast to several possible types.
+213,3,"What you actually want is to modify <code>data</code>, so you should do so, e.g."
+214,1,"(*) Although the original data is not modified by this, it may be ""deleted"" i.e. it's memory may be freed if it is no longer referenced by any variable, because it is no longer needed."
+228,2,I hope the explanation makes sense and check the documentation if you need more info.

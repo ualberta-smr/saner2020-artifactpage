@@ -1,0 +1,43 @@
+ResponseID,User_ID,SentenceID,SentenceText,Response
+947,1abff8f3c01fdafd3bcd19f87c394ce4,-3,-1,"I rated the sentences which were more cohesive and dealt with Central issues of the problem, highly"
+1132,e00a907093d3662aa176f39e14952433,-3,-1,They were very well written and easy to understand.
+1191,5857532ecc165a002982034e30107bdf,-3,-1,They directly tackled a problem or were close to blocktext.
+1244,d1a66d7119f95c8f2c9361ec9f55a951,-3,-1,The most useful sentences provided a direct and immediate solution to the problem at hand. Other useful sentences provided alternate solutions.
+1295,e65bb7c765458b48e9ecc690c047e57e,-3,-1,It usually received a higher rating if it starts answering the question directly instead of it being a step toward the solution.
+1498,5ae06be6dd4e8581d5c90c40188c4897,-3,-1,The importance and relevance of the information in highlighted part.
+1756,86a32f171475d4ad42af11c4cbb1eaf1,-3,-1,"Whether they provided useful, on-topic info."
+1856,a3f1676dc2e47d8d53c2a7c129a67b30,-3,-1,I thought it was helpful when someone saw the problem and explained what was happening and causing the problem.
+1878,008b58b84d46a50e0332032e0d3d9e3a,-3,-1,The sentences describes the solution in shortest way. It save time of lots of users.
+1899,d6cef22e92c1343285684a3e993e6bd3,-3,-1,The one listing existing libraries for solving the users problem is directly helpful.
+1908,7f9418fde2cfedcdde148dbdbb94d5fe,-3,-1,clear and short explanation to the problem listed makes me easy to understand
+2335,c0987233440ef3ca8ad15efbe319b9fe,-3,-1,When the highlight contained direct explanation of a function call or general syntax explanation.
+2480,2a8581d33179ed475cf9cfcada387e57,-3,-1,that affects my rating is valuablility of sentence to help user 
+2652,1bd1c455f2839dc7cbc6251537f3da8c,-3,-1,I don't have any opinion
+2750,b5c68f66246b451c0f65518977e7a241,-3,-1,I have rated well the sentences that explain the reason of the problem or an aspect to be careful about.
+2833,3e51e4b28d98fafdb6af2a476e01ca7a,-3,-1,no
+2976,5c1e42105e8b0f72d95a7580f24fb393,-3,-1,Information that is crucial to completing the task should be highlighted. 
+3188,1e291d9f8c99470ffa480486a34873f5,-3,-1,"Some were not very helpful, but most were filled with quality examples and explanations."
+3290,46a48d98a47aeb653879015c3361fa64,-3,-1,"coding samples, nothing redundant. all helpful and no extraneous details."
+3898,190b2cf87a5569b0aa93aacda8da876a,-3,-1,"The most useful sentences were succinct and to the point regarding the answer, and just gave the information in plain language, and then usually included some elaboration or code snippets."
+4329,c53ab511afc9daa4c139b32cfb3911df,-3,-1,"Yes, if the highlighted sentence were precise and pointed out exactly what the person who asked the question was doing wrong then I found the highlighted sentence very relevant to the solution."
+4549,6ec5e178e529f6b2f418bf478f2ce59c,-3,-1,I noticed that most of the comprehensive answers tended to have variable names quoted.
+4760,567145b16da60b17212073e933b46886,-3,-1,"They needed to explain something. If they did not include any information, I rated them as irrelevant. If they are the core part of a solution, I rated them as important."
+5000,b0b07d3a799b71ba702f4c5da29f27b9,-3,-1,"They mentioned specific tasks to be done, explained code or had links for further research."
+5143,dc6630e697579eeb3bb390355349868b,-3,-1,The keywords and the methods that are included in the sentence has influence in the rating of the sentence.
+5492,11e321cebd307d56075b6bf9ca4248c7,-3,-1,The relevance of the sentence to the question and whether the sentence was understandable in isolation
+5498,5e1008f67932df8c7b022882d312205d,-3,-1,"I tried to see if sentences actually answered the question.  Some provided useful information,  bit didn't directly address the question,"
+5739,57dd37df7c9b09ff65cdf930d2a600ed,-3,-1,No
+5884,340e8782e70cce8dbf3be406e1ef505e,-3,-1,I rated higher sentences with factual information
+5948,4147da6320a499a7706a4cb34679ceae,-3,-1,no
+6028,9e474d6b2dda6f02fe5a5381b2ae7dd1,-3,-1,"green tick, links and solutions "
+6549,7a950c0d4743490af403d1b63f6735d6,-3,-1,"Correcting a misunderstanding is the most important. If the asker misunderstands something, you must correct that knowledge before anything else can be corrected."
+6687,40911285d6743fcd280b5badd29bd31c,-3,-1,How direct and straight to the point the answer was and saying the solution.
+6909,36d239cfa27dd388296579a4d24afb15,-3,-1,The sentences contain information regarding the actual solution to the problem. 
+7053,0f6f9cc0bcb338401e6e9ad2aac3aa7f,-3,-1,Full answers that are meaningful and provide context to the issue at hand.
+7158,a95f5fba5e1b799bd7aa667fb1c5cd08,-3,-1,It's generally clear when an answerer took the time to actually read the full question. The most useful answers clearly address the points of the question and don't add unnecessary details or unrelated details.
+7221,94269079ab46deae14277decb3e44399,-3,-1,"Actually, when you see the answer, we could see how many number of upvotes that answer has got. So, it affected me in giving rating."
+7527,2ebf68fd3883774de5aeeaafdefae460,-3,-1,Sentences that gave detailed explanation of code functions.
+7592,e0189a864102ab9974837b37cb0f2c9d,-3,-1,"They either provided a link to resources to help others research what they were talking about, or stated the information on why their logic was the way it was."
+7805,437132e2719f79b06bcc330b5c8d827b,-3,-1,The answers which quoted the original post were helpful. Also ones that provided code examples and explanations were especially helpful. 
+7878,aed31d20356f4f21667630fbaf6d6f11,-3,-1,If they are relevant to the questions
+8042,eb47749ec4c3a53610bd5bc502cc6672,-3,-1,"It's a fact, not an opinion"
