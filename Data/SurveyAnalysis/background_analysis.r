@@ -5,7 +5,7 @@ num_participants <- nrow(q1_data)
 
 c <- ggplot(q1_data, aes(factor(q1_data$Response, levels=c("Yes", "No"), ordered=TRUE)))
 
-plot_bar_chart(c, "figures/swdev.pdf", num_participants)
+plot_bar_chart(c, "../figures/swdev.pdf", num_participants)
 
 ####q2_data
 #What is your job title?
@@ -82,7 +82,7 @@ levels(q2_data$Response)[match("Functional Bug Tester",levels(q2_data$Response))
 
 c <- ggplot(q2_data, aes(factor(q2_data$Response, levels=c("Mangerial", "Developer", "Software Engineer", "IT Support", "Analyst", "Other"), ordered=TRUE)))
 
-plot_bar_chart(c, "figures/jobtitle.pdf", num_participants)
+plot_bar_chart(c, "../figures/jobtitle.pdf", num_participants)
 
 ####q3_data
 #For how many years have you been developing software?
@@ -104,7 +104,7 @@ q3_data[q3_data$Response >20,][,"year_cat"] <- "20+"
 c <- ggplot(q2_data, aes(factor(q3_data$year_cat,
 levels=c("<=1", "1-3", "3-5", "5-10", "10-20", "20+"), ordered=TRUE)))
 
-plot_bar_chart(c, "figures/dev_years.pdf", num_participants)
+plot_bar_chart(c, "../figures/dev_years.pdf", num_participants)
 #ggsave("../figures/dev_years.pdf", width=11.5, height=2.25, dpi=300)
 
 ####q4_data
@@ -123,7 +123,7 @@ levels(q4_data$Response)[match("JAVA",levels(q4_data$Response))] <- "Java"
 
 c <- ggplot(q4_data, aes(factor(q4_data$Response, levels=c("N/A", "web", "Java"), ordered=TRUE)))
 
-plot_bar_chart(c, "figures/sw-area.pdf", num_participants)
+plot_bar_chart(c, "../figures/sw-area.pdf", num_participants)
 
 
 ####q5_data
@@ -135,7 +135,7 @@ levels(q5_data$Response)[match("No experience at all using json",levels(q5_data$
 
 c <- ggplot(q5_data, aes(factor(q5_data$Response, levels=c("No Experience", "Beginner", "Intermediate", "Expert"), ordered=TRUE)))
 
-plot_bar_chart(c, "figures/json_exp.pdf", num_participants)
+plot_bar_chart(c, "../figures/json_exp.pdf", num_participants)
 
 
 ####q6_data
@@ -145,7 +145,7 @@ num_participants <- nrow(q6_data)
 
 c <- ggplot(q6_data, aes(factor(q6_data$Response, levels=c("Yes", "No"), ordered=TRUE)))
 
-plot_bar_chart(c, "figures/so_use.pdf", num_participants)
+plot_bar_chart(c, "../figures/so_use.pdf", num_participants)
 
 
 ####q7_data
@@ -155,6 +155,6 @@ num_participants <- nrow(q7_data)
 
 c <- ggplot(q7_data, aes(factor(q7_data$Response, levels=c("Yes", "No"), ordered=TRUE)))
 
-plot_bar_chart(c, "figures/so_contr.pdf", num_participants)
+plot_bar_chart(c, "../figures/so_contr.pdf", num_participants)
 
 

@@ -7,6 +7,8 @@ library(stringi)
 library(plyr)
 require(gdata)
 library(doBy)
+library(tidyverse)
+library(likert)
 
 ###################################Common Data Vectors############################
 sentence_labels=c('173', '175', '177', '178', '179', '180', '181', '183', '184', '189', '191', '192', '193', '194', '195', '196', '197', '198', '199', '200', '201', '202', '203', '204', '205', '206', '207', '208', '209', '210', '211', '212', '213', '214', '215', '217','218', '219', '220', '221', '222','223','224','225','227', '228', '229', '230', '231', '232','233','234', '235', '236', '237','238', '239', '240', '241','242', '243','245','246','247', '248', '249', '250', '251', '252', '253', '254', '255', '257', '258', '262', '263', '264')
@@ -45,7 +47,7 @@ theme_minimal() +
 theme(axis.text=element_text(size=20), axis.title=element_text(size=20))
 
 
-ggsave("figures/num_rating_per_tech.pdf", width=9, height=4.5, dpi=300)
+ggsave("../figures/num_rating_per_tech.pdf", width=9, height=4.5, dpi=300)
 #####################################################################################
 
 ###########################Number of ratings per thread##############################
@@ -71,7 +73,7 @@ ylab("Num. of Ratings Per Thread") +
 xlab("") +
 theme_classic()
 
-ggsave("figures/rating_per_thread.pdf")
+ggsave("../figures/rating_per_thread.pdf")
 #####################################################################################
 
 ###################################Q8 Analysis (SR1)####################################
@@ -97,7 +99,7 @@ geom_violin() +
 scale_y_continuous(limits=c(1,3))+
 geom_boxplot(width=0.1)
 
-ggsave("figures/q8_overall_bytech.pdf", width=9, height=4.5, dpi=300)
+ggsave("../figures/q8_overall_bytech.pdf", width=9, height=4.5, dpi=300)
 ### End Overall violin for Q8
 ###################################END Q8 Analysis (SR1)####################################
 
@@ -121,7 +123,7 @@ ggplot(q9_data, aes(x=Technique, y=Response))+
 geom_violin() +
 geom_boxplot(width=0.1)
 
-ggsave("figures/q9_overall_bytech.pdf", width=9, height=4.5, dpi=300)
+ggsave("../figures/q9_overall_bytech.pdf", width=9, height=4.5, dpi=300)
 ########End Overall violin plot for Q9
 ##############################END Q9 Analysis (SR2)####################################
 
@@ -147,7 +149,7 @@ ggplot(q10_data, aes(x=Technique, y=Response))+
 geom_violin() +
 geom_boxplot(width=0.1)
 
-ggsave("figures/q10_overall_bytech.pdf", width=9, height=4.5, dpi=300)
+ggsave("../figures/q10_overall_bytech.pdf", width=9, height=4.5, dpi=300)
 ########End Overall violin plot for Q10
 ##############################END Q10 Analysis (SR3)####################################
 
@@ -172,7 +174,7 @@ geom_violin(aes(color=Question), position = position_dodge(0.9))+
 geom_boxplot(aes(color=Question), width=0.1, position = position_dodge(0.9))+
 scale_color_brewer(palette="Dark2")+ theme_minimal()
 
-ggsave("figures/q9_q10_overall_bytech.pdf", width=9, height=4.5, dpi=300)
+ggsave("../figures/q9_q10_overall_bytech.pdf", width=9, height=4.5, dpi=300)
 
 ############END Combining overall plots for Q9 (SR2) and Q10(SR3)#######################
 
@@ -207,7 +209,7 @@ scale_fill_brewer(palette="BuPu") +
 theme_minimal()+
 theme(axis.text=element_text(size=20), axis.title=element_text(size=20),legend.position = "top")
 
-ggsave("figures/allq_overall_bytech.pdf", width=9, height=4.5, dpi=300)
+ggsave("../figures/allq_overall_bytech.pdf", width=9, height=4.5, dpi=300)
 
 ############END Combining overall plots for Q9 (SR2) and Q10(SR3)#######################
 
@@ -256,4 +258,17 @@ calc_recall_prec("q8")
 calc_recall_prec("q9")
 calc_recall_prec("q10")
 sink()
+
+###get median ratings for each sentence so that we can later use
+###this list to get the scores for each thread/answer
+analyze_sentence_ratings("q8")
+analyze_sentence_ratings("q9")
+analyze_sentence_ratings("q10")
+
+
+###########################Create likert plots##################################
+create_likert_plots("q8")
+create_likert_plots("q9")
+create_likert_plots("q10")
+############################End likert plots####################################
 

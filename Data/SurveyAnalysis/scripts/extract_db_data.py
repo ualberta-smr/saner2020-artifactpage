@@ -29,16 +29,16 @@ def get_sentences_to_analyze(question, level):
 
 #writes output but breaks down the mapping of techniques
 #https://stackoverflow.com/questions/4613465/using-python-to-write-mysql-query-to-csv-need-to-show-field-names by Mathnode
-# 1: ifsentence
-# 2: condinsight
-# 3: WordPatternBaseline
-# 4: ifsentence-WordPatternBaseline (1 + 3)
-# 5: condinsight-WordPatternBaseline (2 + 3)
-# 6: lexrank
-# 7: ifsentence + lexrank (1 + 6)
-# 8: condinsight + lexrank (2 + 6)
-# 9: wordpattern + lexrank (3 + 6)
-# 10: ifsentence + wordpatternbaseline + lexrank (1 + 3 + 6)
+# 1: ifsentence (23 sentences)
+# 2: condinsight (15 sentences)
+# 3: WordPatternBaseline (13 sentences) -- 13 sentences
+# 4: ifsentence-WordPatternBaseline (1 + 3) -- 4 sentences
+# 5: condinsight-WordPatternBaseline (2 + 3) -- 1 sentence
+# 6: lexrank -- 13 sentences
+# 7: ifsentence + lexrank (1 + 6) -- 1 sentence
+# 8: condinsight + lexrank (2 + 6) -- 4 sentences
+# 9: wordpattern + lexrank (3 + 6) -- 2 sentences
+# 10: ifsentence + wordpatternbaseline + lexrank (1 + 3 + 6) -- 1 sentence
 def write_techniques(filename, rows):
 	# Continue only if there are rows returned.
 	if rows:
@@ -46,45 +46,46 @@ def write_techniques(filename, rows):
 		result = list()
 
 		for row in rows:
-			if row[1] == "2":#all condinsight sentences are also ifsentences
+			techCol = row[3]
+			if techCol == "2":#all condinsight sentences are also ifsentences
 				result.append(row)
-				new_row = (row[0], "1", row[2], row[3], row[4])
+				new_row = (row[0], row[1], row[2], "1", row[4], row[5], row[6])
 				result.append(new_row)
-			elif row[1] == "4":
-				new_row = (row[0], "1", row[2], row[3], row[4])
+			elif techCol == "4":
+				new_row = (row[0], row[1], row[2], "1", row[4], row[5], row[6])
 				result.append(new_row)
-				new_row = (row[0], "3", row[2], row[3], row[4])
+				new_row = (row[0], row[1], row[2], "3", row[4], row[5], row[6])
 				result.append(new_row)
-			elif row[1] == "5":
-				new_row = (row[0], "1", row[2], row[3], row[4])#all condinsight sentences are also ifsentences
+			elif techCol == "5":
+				new_row = (row[0], row[1], row[2], "1", row[4], row[5], row[6])#all condinsight sentences are also ifsentences
 				result.append(new_row)
-				new_row = (row[0], "2", row[2], row[3], row[4])
+				new_row = (row[0], row[1], row[2], "2", row[4], row[5], row[6])
 				result.append(new_row)
-				new_row = (row[0], "3", row[2], row[3], row[4])
+				new_row = (row[0], row[1], row[2], "3", row[4], row[5], row[6])
 				result.append(new_row)
-			elif row[1] == "7":
-				new_row = (row[0], "1", row[2], row[3], row[4])
+			elif techCol == "7":
+				new_row = (row[0], row[1], row[2], "1", row[4], row[5], row[6])
 				result.append(new_row)
-				new_row = (row[0], "6", row[2], row[3], row[4])
+				new_row = (row[0], row[1], row[2], "6", row[4], row[5], row[6])
 				result.append(new_row)
-			elif row[1] == "8":
-				new_row = (row[0], "1", row[2], row[3], row[4])#all condinsight sentences are also ifsentences
+			elif techCol == "8":
+				new_row = (row[0], row[1], row[2], "1", row[4], row[5], row[6])#all condinsight sentences are also ifsentences
 				result.append(new_row)
-				new_row = (row[0], "2", row[2], row[3], row[4])
+				new_row = (row[0], row[1], row[2], "2", row[4], row[5], row[6])
 				result.append(new_row)
-				new_row = (row[0], "6", row[2], row[3], row[4])
+				new_row = (row[0], row[1], row[2], "6", row[4], row[5], row[6])
 				result.append(new_row)
-			elif row[1] == "9":
-				new_row = (row[0], "3", row[2], row[3], row[4])
+			elif techCol == "9":
+				new_row = (row[0], row[1], row[2], "3", row[4], row[5], row[6])
 				result.append(new_row)
-				new_row = (row[0], "6", row[2], row[3], row[4])
+				new_row = (row[0], row[1], row[2], "6", row[4], row[5], row[6])
 				result.append(new_row)
-			elif row[1] == "10":
-				new_row = (row[0], "1", row[2], row[3], row[4])
+			elif techCol == "10":
+				new_row = (row[0], row[1], row[2], "1", row[4], row[5], row[6])
 				result.append(new_row)
-				new_row = (row[0], "3", row[2], row[3], row[4])
+				new_row = (row[0], row[1], row[2], "3", row[4], row[5], row[6])
 				result.append(new_row)
-				new_row = (row[0], "6", row[2], row[3], row[4])
+				new_row = (row[0], row[1], row[2], "6", row[4], row[5], row[6])
 				result.append(new_row)
 			else:
 				result.append(row)
@@ -262,11 +263,13 @@ try:
 
 		##dump answers of sentence questions to be processed in R
 		for q_id in range(8,11):
-			query = 'select \'SentenceID\', \'Technique\',  \'SentenceText\', \'User_ID\', \'Response\' UNION ALL select sentence_id, technique, sentence_text, user_id, response from responses, sentences where responses.sentence_id = sentences.id and sentence_id > 0 and question_id =' + str(q_id) +' and user_id in ' + survey_user_ids
+			query = 'select \'SentenceID\', \'ThreadID\', \'AnswerID\', \'Technique\',  \'SentenceText\', \'User_ID\', \'Response\' UNION ALL select sentence_id, thread_id, answer_id, technique, sentence_text, user_id, response from responses, sentences where responses.sentence_id = sentences.id and sentence_id > 0 and question_id =' + str(q_id) +' and user_id in ' + survey_user_ids
 			cursor.execute(query)
 			rows = cursor.fetchall()
 			write_techniques('../data/q' + str(q_id) + '.csv', rows)
-			#write_to_csv('../data/q' + str(q_id) + '.csv', rows)
+			#will write pure data too without breaking down the techniques.
+			#this "pure data" will be used for the venn diagram analysis
+			write_to_csv('../data/q' + str(q_id) + '_pure.csv', rows)
 
 		##dump number of ratings per thread
 		##just using question 8 here but any question would do or doing distinct
@@ -289,6 +292,12 @@ try:
 			rows = cursor.fetchall()
 			write_to_csv('../data/q' + str(q_id) + '.csv', rows)
 			#write_to_csv('../data/q' + str(q_id) + '.csv', rows)
+
+		##dump data used to calculate inter-rater agreement
+		query = 'select \'UserId\', \'SentenceID\', \'QuestionID\', \'Response\' Union ALL select user_id, sentence_id, question_id, response from responses where question_id >= 8 and question_id <= 10 and user_id in ' + survey_user_ids
+		cursor.execute(query)
+		rows = cursor.fetchall()
+		write_to_csv('../data/ira_data.csv', rows)
 
 		##get sentence text for interesting sentences
 		##ids created manually based on analyzing plots

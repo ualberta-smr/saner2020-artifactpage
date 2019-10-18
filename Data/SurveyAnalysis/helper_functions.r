@@ -17,8 +17,8 @@ calc_recall_prec <- function(question, highlimit, lowlimit){
     
     #to avoid a wrong total num of sentences, remove duplicates caused
     #by expanding sentences detected by the same technique
-    #column 1 is sentence id, column 4 is user id
-    non_dup_data <- data[!duplicated(data[c(1,4)]),]
+    #duplicates can be identified by the same user evaluating the samew sentence
+    non_dup_data <- data[!duplicated(data[c("SentenceID","User_ID")]),]
     non_dup_stats <- summaryBy( Response ~ SentenceID+SentenceText, data= non_dup_data, FUN = list(median))
     
     full_stats <- summaryBy(Response ~ SentenceID+Technique+SentenceText, data=data, FUN=list(median))
@@ -44,10 +44,10 @@ calc_recall_prec <- function(question, highlimit, lowlimit){
             pos_values <- stats[which(stats$Response.median >= highlimit),]
             neg_values <- stats[which(stats$Response.median <= lowlimit),]
             
-        cat(sprintf("\\pgfkeyssetvalue{total_pos_tech%d_%s_threshold_%d}{%.0f}\n", technique, question,highlimit, nrow(pos_values),'',sep=''))
-        cat(sprintf("\\pgfkeyssetvalue{total_neg_tech%d_%s_threshold_%d}{%.0f}\n", technique, question,lowlimit, nrow(neg_values),'',sep=''))
+            cat(sprintf("\\pgfkeyssetvalue{total_pos_tech%d_%s_threshold_%d}{%.0f}\n", technique, question,highlimit, nrow(pos_values),'',sep=''))
+            cat(sprintf("\\pgfkeyssetvalue{total_neg_tech%d_%s_threshold_%d}{%.0f}\n", technique, question,lowlimit, nrow(neg_values),'',sep=''))
         
-        cat(sprintf("\\pgfkeyssetvalue{mean_sentence_rating_tech%d_%s}{%.0f}\n", technique, question,avg_rating,'',sep=''))
+            cat(sprintf("\\pgfkeyssetvalue{mean_sentence_rating_tech%d_%s}{%.0f}\n", technique, question,avg_rating,'',sep=''))
         
             intersection <- merge(ground_truth,stats)
             precision = round(nrow(intersection)/total_by_tech, digits=2)
@@ -71,6 +71,30 @@ calc_recall_prec <- function(question, highlimit, lowlimit){
     }
     
     write.csv(full_stats, paste("data/",question, "_allvals.csv", sep=""))
+}
+
+analyze_sentence_ratings <- function(question){
+    #use these stats to get the number of highly rated sentences per technique
+    #these are "pure" in the sense that they will show overlap in techniques. For example, 8 means
+    #lexrank + condinsight. Other analysis duplicate these to have one sentence show up for each technique
+    #obviously, you can still do an intersection there, but just found this easier to give
+    #some stats we need to create the venn diagrams
+    #change the threshold as needed
+    data <- read.csv(paste("data/", question, "_pure.csv", sep=""))
+    threshold = 4
+    
+    if(question == "q8"){
+        data <- replace_and_convert_q8_values(data)
+        limits <- c(1,2,3)
+        threshold = 3
+    }else{
+        data <- replace_and_convert_likert_scale(data)
+    }
+    
+    stats <- summaryBy( Response ~ SentenceID+ThreadID+AnswerID+Technique, data= data, FUN = list(median))
+    write.csv(stats, paste("data/",question, "_ratingstatspure.csv", sep=""))
+    highly_rated <- stats[which(stats$Response.median >= threshold),]
+    count(highly_rated, "Technique")
 }
 
 
@@ -144,7 +168,7 @@ plot_all_q_per_tech <- function(data){
             
             
             
-        ggsave(paste("figures/all_q_ratings_tech", i, ".pdf", sep=""), dpi=300, width=22, height=3)
+        ggsave(paste("../figures/all_q_ratings_tech", i, ".pdf", sep=""), dpi=300, width=22, height=3)
     }
 }
 
@@ -158,7 +182,7 @@ plot_violin_per_tech <- function(data, question){
 
     for (i in c(1,2,3,6)){
        temp_data <- data[which(data$Technique == i),]
-       plot_violin(temp_data,"Rating", paste("figures/", question, "_ratings_tech", i, ".pdf", sep=""))
+       plot_violin(temp_data,"Rating", paste("../figures/", question, "_ratings_tech", i, ".pdf", sep=""))
     }
 }
 
@@ -227,7 +251,7 @@ create_q8_stacked_chart <- function(q8_data){
     geom_text(size = 3, position = position_stack(vjust = 0.5)) +
     scale_fill_grey(start = 0.2, end = .8) +
     ylab("Evaluation of usefulness of sentences per technique")
-    ggsave("figures/sentence_value.pdf", width=9, height=4.5, dpi=300)
+    ggsave("../figures/sentence_value.pdf", width=9, height=4.5, dpi=300)
 
 }
 
@@ -260,7 +284,7 @@ create_stacked_bar_chart <- function(input_data, question){
     "lexrank" = str_wrap("lexrank",width=10))) +
     geom_text(size = 3, position = position_stack(vjust = 0.5)) +
     ylab("Number of Responses")
-    ggsave(paste("figures/", question, "_stacked.pdf", sep=","), width=9, height=4.5, dpi=300)
+    ggsave(paste("../figures/", question, "_stacked.pdf"), width=9, height=4.5, dpi=300)
 
 }
 
@@ -345,3 +369,36 @@ plot_bar_chart <- function(plot, fileName,denom,width=11.5, height=2.25, dpi=300
     ggsave(fileName, width=width, height=height, dpi=dpi)
 }
 
+create_likert_plots <- function(question){
+    data <- read.csv(paste("data/", question, ".csv", sep=""))
+
+    #we only need the Technique and Response columns
+    vars <- c("Technique", "Response")
+    subset <- data[vars]
+
+    #map technique numbers to the names
+    subset$Technique <- mapvalues(subset$Technique, from = c(1,2,3,6), to=c("simpleif", "contextif", "wordpattern", "lexrank"))
+
+
+    #get names of techniques & sort scale in the order we want
+    techniques <- c("simpleif", "contextif", "wordpattern", "lexrank")
+    
+    if(question == "q8"){
+        levels(subset$Response)[match("The sentence is meaningful and provides important/useful information needed to correctly accomplish the task in question",levels(subset$Response))] <- "Useful"
+        levels(subset$Response)[match("The sentence does not make sense to me.",levels(subset$Response))] <- "Not meaningful"
+        levels(subset$Response)[match("The sentence is meaningful, but does not provide any important/useful information to correctly accomplish the task in question",levels(subset$Response))] <- "Not useful"
+        
+        responses <- c("Not meaningful", "Not useful", "Useful")
+    }else{
+        responses <- c("Strongly disagree", "Disagree", "Neither agree or disagree", "Agree", "Strongly agree")
+    }
+    subset$Response <- factor(subset$Response, levels=responses)
+
+
+    items <- subset %>% mutate(id= row_number()) %>% spread(Technique, Response) %>% select(-id)
+    plot(likert(items), type="bar", group.order=techniques, legend="", legend.position="bottom", text.size=4)+
+    theme(axis.text.y = element_text(colour="black", size="10", hjust=0), axis.text.x =element_text(colour="black", size="10", hjust=0) ) +
+    labs(y="Percent of Responses")
+    
+    ggsave(paste("../figures/", question, "_likert.pdf", sep=""), height=3, width=9, dpi=300)
+}
