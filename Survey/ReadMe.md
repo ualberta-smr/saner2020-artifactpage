@@ -1,6 +1,6 @@
 ## Survey Data & Analysis
 
-This folder contains all the data related to our survey as well as the scripts we use to analyze it.
+This folder contains all the data related to our survey as well as the scripts we use to analyze it. Note that this study has received ethics clearance, and the folder also contains a copy of the information document participants could read.
 
 * `SurveyDBDump/` contains a dump of the database that recorded all the responses during the survey. You can import this database locally by running `mysql -u <username> -p <password> db < FinalSurveyDump.sql`. Note that the sentences table contains the information about the sentences used in the survey. Since some sentences were detected by multiple techniques, we used numbers to denote the combinations such that each sentence is stored (and displayed to participants) only once. The file `techniques.txt` describes those numbers.
 
@@ -11,3 +11,5 @@ This folder contains all the data related to our survey as well as the scripts w
 		* this folder will also be the target location for extracting data from the database during the survey results analysis. We currently include the results we have in that folder (which would get overridden when you run things but you should get the same files aanyways)	
 
 * `QualitativeAnalysis/` contains a zip file of our open-coding for the various survey questions used to answer RQ2 and RQ3.
+
+* `Snapshots/` contains snapshots of the survey
