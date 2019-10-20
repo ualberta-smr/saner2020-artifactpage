@@ -1,9 +1,12 @@
 import pymysql
 import csv
+from stackapi import StackAPI
+from statistics import median, mean
 
-def write_to_csv(filename, data):
+def write_to_csv(filename, data,header=""):
 	fp = open(filename, 'w')
 	myFile = csv.writer(fp)
+	myFile.writerow(header)
 	myFile.writerows(data)
 	fp.close()
 
@@ -97,6 +100,36 @@ def write_techniques(filename, rows):
 				csvwriter.writerow(row)
 	else:
 		sys.exit("No rows found for query: {}".format(sql))
+
+
+#author:sjakobi
+#source:https://stackoverflow.com/questions/11458239/python-changing-value-in-a-tuple
+def replace_at_index(tup, index, newval):
+   return tup[:index] + (newval,) + tup[index+1:]
+
+def get_corresponding_technique(techNum):
+	if (techNum == 1):
+		return "simpleif"
+	elif (techNum == 2):
+		return "contextif"
+	elif (techNum == 3):
+		return "wordpattern"
+	elif (techNum == 4):
+		return "simpleif + wordpattern"
+	elif (techNum == 5):
+		return "contextif + wordpattern"
+	elif (techNum == 6):
+		return "lexrank"
+	elif (techNum == 7):
+		return "simpleif + lexrank"
+	elif (techNum == 8):
+		return "contextif + lexrank"
+	elif (techNum == 9):
+		return "wordpattern + lexrank"
+	elif (techNum == 10):
+		return "simpleif + wordpattern + lexrank"
+	else:
+		return "UNKNOWN"
 
 #writes output but breaks down the mapping of techniques but for 3 col data..
 #TODO: join with prev function to avoid duplication
@@ -284,6 +317,57 @@ try:
 		cursor.execute(query)
 		rows = cursor.fetchall()
 		write_techniques_threecols('../data/rating_per_sentence_per_technique.csv', rows)
+
+		##dump evaluation sentence summary data along with SO information
+		##remove quality gate sentences
+		query = "select id, thread_id, answer_id, technique, sentence_text from sentences where id > 0"
+		cursor.execute(query)
+		rows = cursor.fetchall()
+		result = list()
+		SITE = StackAPI('stackoverflow', key='UuPf6s)HIuhohPoTj8Baww((')
+		for row in rows:
+			
+			#get question score + num of answers per thread
+			question_data = SITE.fetch('questions', ids=[str(row[1])])
+
+			items = question_data.get('items')
+			new_row = row
+			if items is not None:
+				for question in items: #1 answer anyways
+					new_row += (question['score'],)
+					new_row += (question['answer_count'],)
+
+			#get answer score
+			answer_data = SITE.fetch('answers', ids=[str(row[2].split('-')[1])])
+			items = answer_data.get('items')
+			if items is not None:
+				for answer in items: #1 answer anyways
+					new_row += (answer['score'],)
+
+			#replace technique number with corresponding technique
+			replace_at_index(new_row, 3,  get_corresponding_technique(new_row[3]))
+
+			#get median scores
+			for q_id in range (8,11):
+				query = "select response from responses where question_id = " + str(q_id) + " and sentence_id = " + str(new_row[0]) + " and user_id in " + survey_user_ids
+				cursor.execute(query)
+				rows = cursor.fetchall()
+
+				if q_id == 8:
+					dictionary = {'The sentence does not make sense to me.':1,'The sentence is meaningful, but does not provide any important/useful information to correctly accomplish the task in question':2, 'The sentence is meaningful and provides important/useful information needed to correctly accomplish the task in question':3}
+				else:
+					dictionary = {'Strongly agree':5, 'Agree':4, 'Neither agree or disagree':3, 'Disagree':2, 'Strongly disagree':1}
+
+		
+				new_list = [dictionary.get(n[0]) for n in rows]
+				new_row += (median(new_list),)
+			
+			result.append(new_row)
+
+
+		header = ["SentenceID", "ThreadID", "AnswerID", "Technique", "SentenceText", "ThreadScore", "NumOfAnswersInThread", "AnswerScore", "SR1Median", "SR2Median", "SR3Median"]
+		write_to_csv("../data/evaluation_sentence_stats.csv", result,header)	
+
 
 		##dump exit answers
 		for q_id in range(11,18):
