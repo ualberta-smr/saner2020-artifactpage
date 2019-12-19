@@ -1,6 +1,6 @@
 # Essential Sentences for Navigating Stack Overflow Answers
 
-This is the online artifact page for the SANER '20 paper "Essential Sentences for Navigating Stack Overflow Answers" by [Sarah Nadi](https://www.sarahnadi.org) and [Christoph Treude](http://ctreude.ca/). Please contact Sarah Nadi if you have any questions.
+This is the online artifact page for the SANER '20 paper "Essential Sentences for Navigating Stack Overflow Answers" by [Sarah Nadi](https://www.sarahnadi.org) and [Christoph Treude](http://ctreude.ca/). Please contact Sarah Nadi if you have any questions. If you use any of the data or code in this artifact page, you can cite its DOI [https://doi.org/10.6084/m9.figshare.10005515](https://doi.org/10.6084/m9.figshare.10005515).
 
 ## Repo Overview
 
