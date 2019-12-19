@@ -1,6 +1,6 @@
 # Investigating Contextual Cues in Stack Overflow Answers
 
-This is the online artifact page/repository for the SANER '20 submission titled "Contextual Cues in Stack Overflow Answers".
+This is the online artifact page for the SANER '20 paper "Essential Sentences for Navigating Stack Overflow Answers" by [Sarah Nadi](https://www.sarahnadi.org) and [Christoph Treude](http://ctreude.ca/). Please contact Sarah Nadi if you have any questions.
 
 ## Repo Overview
 
