@@ -1,0 +1,3 @@
+[submodule "StackOverflowNavCues"]
+	path = StackOverflowNavCues
+	url = git@github.com:ualberta-smr/StackOverflowNavCues.git
